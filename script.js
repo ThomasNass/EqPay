@@ -28,12 +28,12 @@ const calc = () => {
 
     const total = parseInt(yourIncome) + parseInt(partnerIncome);
 
-    const yourCut = (parseInt(yourIncome) / parseInt(total)) * parseInt(expenses);
-    const partnerCut = parseInt(partnerIncome) / parseInt(total) * parseInt(expenses);
+    const yourCut = Math.round((parseInt(yourIncome) / parseInt(total)) * parseInt(expenses));
+    const partnerCut = Math.round(parseInt(partnerIncome) / parseInt(total) * parseInt(expenses));
     showResults();
     const message = document.createElement("p");
 
-    message.textContent = `You pay: ${yourCut} \n Your partner pays:${partnerCut}`;
+    message.textContent = `You pay: ${yourCut} \nYour partner pays:${partnerCut}`;
 
     rescont.appendChild(message);
 
@@ -56,5 +56,8 @@ const showResults = () => {
 }
 
 returnBtn.addEventListener("click", () => {
-    showResults()
+
+    rescont.lastChild.remove();
+
+    showResults();
 })
